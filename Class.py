@@ -3,85 +3,92 @@ commands = ["create", "manage", "end"]
 
 
 class Student:
-    def __init__(user):
+    def __init__(self):
 
-        user.name = input("Enter your first name: ")
-        user.surname = input("Enter your surname: ")
-        user.classname = input ("Enter your classname: ")
-        
+        self.name = input("Enter your first name: ")
+        self.surname = input("Enter your surname: ")
+        self.classname = input ("Enter your classname: ")
+      
+
 class Teacher:
-    def __init__(user):
+    def __init__(self):
 
-        user.name = input("Enter your first name: ")
-        user.surname = input("Enter your surname: ")
-        user.subject = input("Enter your Subject: ")
-        user.classes = input("Enter your classes : ")
-        
+        self.name = input("Enter your first name: ")
+        self.surname = input("Enter your surname: ")
+        self.subject = input("Enter your Subject: ")
+        self.classes = input("Enter your classes: ") 
+
 class Homeroomteacher:
-    def __init__(user):
+    def __init__(self):
 
-        user.name = input("Enter your first name: ")
-        user.surname = input("Enter your surname: ")
-        user.classname = input ("Enter your classname: ") 
+        self.name = input("Enter your first name: ")
+        self.surname = input("Enter your surname: ")
+        self.classname = input ("Enter your classname: ") 
+    
         
-
+print ("Hello, welcome in our classroom creator.\n ")
 class Menu:
-    def __init__(user):
-        user.students = []
-        user.teachers = []
-        user.homeroomteachers = []
+    def __init__(self):
+        self.students = []
+        self.teachers = []
+        self.homeroomteachers = []
 
-    def student_creation(user):
+    def student_creation(self):
         student = Student()
-        user.students.append(student)
+        self.students.append(student)
         print("Student created correctly")
 
-    def teacher_creation(user):
+    def teacher_creation(self):
         teacher = Teacher()
-        user.teachers.append(teacher)
+        self.teachers.append(teacher)
         print("Teacher created correctly")
 
-    def homeroomteacher_creation(user):
+    def homeroom_teacher_creation(self):
         homeroomteacher = Homeroomteacher()
-        user.homeroomteachers.append(homeroomteacher)
+        self.homeroomteachers.append(homeroomteacher)
         print("Homeroomteacher created correctly")
 
 
-    def user_creation(user):
+    def user_creation(self):
         user = input("Enter type of user: student, teacher, homeroomteacher: ")
         if user == "student":
-            user.student_creation()
+            self.student_creation()
         if user == "teacher":
-            user.teacher_creation()
+            self.teacher_creation()
         if user == "Homeroomteacher":
-            user.homeroomteacher_creation()
+            self.homeroom_teacher_creation()
         if user == "end":
             return
-        else:
-            print("error")
 
 
-    def manage(user):
-        manage = input("Select the field to edit: student, teacher, homeroomteacher, classname: ")
+    def manage(self):
+        students = {}
+        teachers = {}
+        homeroomteachers = {}
+        manage = input("Select the field to edit: student, teacher, homeroomteacher: ")
         if manage == "student":
-            user.manage_student()
+            name = input("Enter your first name: ")
+            surname = input("Enter your surname: ")
+            if (name,surname) in students:
+                students [name, surname].print()
         if manage == "teacher":
-            user.manage_teacher()
+            name = input("Enter your first name: ")
+            surname = input("Enter your surname: ")
+            if (name,surname) in teachers:
+                teachers [name, surname].print()
         if manage == "homeroomteacher":
-            user.manage_homeroomteacher()
-        if manage == "classname":
-            user.manage_classname()
-
-    def manage_student(user):
-
+            name = input("Enter your first name: ")
+            surname = input("Enter your surname: ")
+            if (name,surname) in homeroomteachers:
+                homeroomteachers [name, surname].print()
 
 
 menu = Menu()
 while True:
-    command = input ("Enter the command you want to chose: create, manage, end: \n"
-                     "create, to start the profile creation\n"
-                     "manage, to dispaly the information required\n"
-                     "end, to terminate the program")
+    command = input ("Enter the command you want to choose: create, manage, end: \n"
+                     "create, to start the profile creation.\n"
+                     "manage, to dispaly the information required.\n"
+                     "end, to terminate the program.\n")
     if command not in commands:
         print("Please enter a valid command: ")
         continue
