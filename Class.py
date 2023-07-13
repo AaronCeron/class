@@ -51,36 +51,34 @@ class Menu:
 
     def user_creation(self):
         user = input("Enter type of user: student, teacher, homeroomteacher: ")
+        user = user.lower()
         if user == "student":
             self.student_creation()
         if user == "teacher":
             self.teacher_creation()
-        if user == "Homeroomteacher":
+        if user == "homeroomteacher":
             self.homeroom_teacher_creation()
         if user == "end":
             return
 
 
     def manage(self):
-        students = {}
-        teachers = {}
-        homeroomteachers = {}
         manage = input("Select the field to edit: student, teacher, homeroomteacher: ")
         if manage == "student":
-            name = input("Enter your first name: ")
-            surname = input("Enter your surname: ")
-            if (name,surname) in students:
-                students [name, surname].print()
+            student_name = input("Enter your name: ")
+            for student in self.students:
+                if student_name == student.name:
+                    print(f"user card:\n Name:{student.name}\n Surname:{student.surname}\n Classname:{student.classname}.")            
         if manage == "teacher":
-            name = input("Enter your first name: ")
-            surname = input("Enter your surname: ")
-            if (name,surname) in teachers:
-                teachers [name, surname].print()
+            teacher_name = input("Enter your name: ")
+            for teacher in self.teachers:
+                if teacher_name == teacher.name:
+                    print(f"user card:\n Name:{teacher.name}\n Surname:{teacher.surname}\n Subject:{teacher.subject}\n. Classes:{teacher.classes}.")
         if manage == "homeroomteacher":
-            name = input("Enter your first name: ")
-            surname = input("Enter your surname: ")
-            if (name,surname) in homeroomteachers:
-                homeroomteachers [name, surname].print()
+            homeroomteacher_name = input("Enter your name: ")
+            for homeroomteacher in self.homeroomteachers:
+                if homeroomteacher_name == homeroomteacher.name:
+                    print(f"user card:\n Name:{homeroomteacher.name}\n Surname:{homeroomteacher.surname}\n Classname:{homeroomteacher.classname}.")
 
 
 menu = Menu()
